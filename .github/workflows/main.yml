@@ -1,0 +1,23 @@
+name: clinvar
+
+# Trigger the workflow on push events to the repository
+on:
+  workflow_dispatch:
+#  push:
+ #   branches:
+  #    - main  # You can specify the branch(es) you want to trigger the workflow on
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the latest code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Run the bash script
+      - name: clinvar
+        run: |
+          chmod +x clinvar.sh  # Ensure the script is executable
+          ./clinvar.sh
